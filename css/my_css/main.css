@@ -1,0 +1,78 @@
+body, body .menu, body .menu .btn-generate,
+body .menu .btn-share,
+body .menu .btn-about, body .colors, body .colors .color1,
+body .colors .color2,
+body .colors .color3,
+body .colors .color4,
+body .colors .color5 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0px;
+  padding: 0px; }
+
+body {
+  align-items: flex-start;
+  font-family: Helvetica, sans-serif;
+  background-color: #000000; }
+  body .menu {
+    justify-content: space-evenly;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 20px;
+    padding-bottom: 48px;
+    background-color: #1F1F1F; }
+    body .menu .btn-generate,
+    body .menu .btn-share,
+    body .menu .btn-about {
+      width: 30%;
+      height: 32px;
+      border-radius: 8px;
+      font-size: 20px;
+      text-decoration: none;
+      background-color: #FFFFFF;
+      color: #000000;
+      background: #bbbbbb;
+      background: linear-gradient(325deg, #bbbbbb 0%, white 100%);
+      cursor: pointer;
+      transition: 100ms all; }
+    body .menu .btn-generate:hover,
+    body .menu .btn-share:hover,
+    body .menu .btn-about:hover {
+      box-shadow: 0px 8px 8px 0px rgba(255, 255, 255, 0.7);
+      cursor: pointer;
+      transition: 100ms all; }
+    body .menu .btn-generate:active,
+    body .menu .btn-share:active,
+    body .menu .btn-about:active {
+      box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.7);
+      cursor: pointer; }
+  body .colors .color1,
+  body .colors .color2,
+  body .colors .color3,
+  body .colors .color4,
+  body .colors .color5 {
+    height: 140px; }
+    body .colors .color1 p,
+    body .colors .color2 p,
+    body .colors .color3 p,
+    body .colors .color4 p,
+    body .colors .color5 p {
+      font-size: 32px; }
+  body .colors .color1 {
+    background-color: red; }
+  body .colors .color2 {
+    background-color: orange; }
+  body .colors .color3 {
+    background-color: yellow; }
+  body .colors .color4 {
+    background-color: green; }
+  body .colors .color5 {
+    background-color: blue; }
+
+/*# sourceMappingURL=main.css.map */
