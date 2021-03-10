@@ -4,7 +4,7 @@
 <head>
         <meta charset="utf-8">
         <title>Random Colors</title>
-        <meta name="description" content="Get random colors for designing purposes - website is bloat free!">
+        <meta name="description" content="Get cool, random colors for designing purposes - website is bloat free!">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" href="rgb.png">
@@ -13,32 +13,77 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link href="fontawesome/css/all.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/my_css/main.css">
+        <link rel="stylesheet" href="css/my_css/webmenu-dark.css">
+        <link rel="stylesheet" href="css/my_css/main-dark.css">
 </head>
 
 <body>
-        <div class="menu">
+        <div class="top-menu">
                 <button class="btn-about" type="button" name="button" href="#">About</button>
-                <button class="btn-share" type="button" name="button">Share</button>
-                <button class="btn-generate" type="button" name="button" onclick="GenerateColor()">Generate</button>
+                <img class="logo" src="rgb.png" alt="">
+                <button class="btn-mode" type="button" name="button"><i class="fas fa-adjust"></i>Dark</button>
         </div>
 
         <div class="colors">
                 <div class="color1" id="color1">
-                        <p id="color-hex-value-1">#123456</p>
+                        <div class="color-panel">
+                                <button class="btn-lock" type="button" name="button" onclick="Lock(1)"><i class="fas fa-lock"></i></button>
+                                <button class="btn-move" type="button" name="button"><i class="fas fa-arrows-alt-v"></i></button>
+                                <textarea id="color_hex_value1" rows="1" cols="7" disabled readonly maxlength="7"></textarea>
+                                <button class="btn-copy" type="button" name="button" onclick="CopyToClipboard(1)"><i class="fas fa-copy"></i></button>
+                                <button class="btn-delete" type="button" name="button"><i class="fas fa-trash-alt"></i></button>
+                        </div>
                 </div>
+
                 <div class="color2" id="color2">
-                        <p id="color-hex-value-2">#123456</p>
+                        <div class="color-panel">
+                                <button class="btn-lock" type="button" name="button" onclick="Lock(2)"><i class="fas fa-lock"></i></button>
+                                <button class="btn-move" type="button" name="button"><i class="fas fa-arrows-alt-v"></i></button>
+                                <textarea id="color_hex_value2" rows="1" cols="7" disabled readonly maxlength="7"></textarea>
+                                <button class="btn-copy" type="button" name="button" onclick="CopyToClipboard(2)"><i class="fas fa-copy"></i></button>
+                                <button class="btn-delete" type="button" name="button"><i class="fas fa-trash-alt"></i></button>
+                        </div>
                 </div>
+
                 <div class="color3" id="color3">
-                        <p id="color-hex-value-3">#123456</p>
+                        <div class="color-panel">
+                                <button class="btn-lock" type="button" name="button" onclick="Lock(3)"><i class="fas fa-lock"></i></button>
+                                <button class="btn-move" type="button" name="button"><i class="fas fa-arrows-alt-v"></i></button>
+                                <textarea id="color_hex_value3" rows="1" cols="7" disabled readonly maxlength="7"></textarea>
+                                <button class="btn-copy" type="button" name="button" onclick="CopyToClipboard(3)"><i class="fas fa-copy"></i></button>
+                                <button class="btn-delete" type="button" name="button"><i class="fas fa-trash-alt"></i></button>
+                        </div>
                 </div>
+
                 <div class="color4" id="color4">
-                        <p id="color-hex-value-4">#123456</p>
+                        <div class="color-panel">
+                                <button class="btn-lock" type="button" name="button" onclick="Lock(4)"><i class="fas fa-lock"></i></button>
+                                <button class="btn-move" type="button" name="button"><i class="fas fa-arrows-alt-v"></i></button>
+                                <textarea id="color_hex_value4" rows="1" cols="7" disabled readonly maxlength="7"></textarea>
+                                <button class="btn-copy" type="button" name="button" onclick="CopyToClipboard(4)"><i class="fas fa-copy"></i></button>
+                                <button class="btn-delete" type="button" name="button"><i class="fas fa-trash-alt"></i></button>
+                        </div>
                 </div>
+
                 <div class="color5" id="color5">
-                        <p id="color-hex-value-5">#123456</p>
+                        <div class="color-panel">
+                                <button class="btn-lock" type="button" name="button" onclick="Lock(5)"><i class="fas fa-lock"></i></button>
+                                <button class="btn-move" type="button" name="button"><i class="fas fa-arrows-alt-v"></i></button>
+                                <textarea id="color_hex_value5" rows="1" cols="7" disabled readonly maxlength="7"></textarea>
+                                <button class="btn-copy" type="button" name="button" onclick="CopyToClipboard(5)"><i class="fas fa-copy"></i></button>
+                                <button class="btn-delete" type="button" name="button"><i class="fas fa-trash-alt"></i></button>
+                        </div>
                 </div>
+        </div>
+
+        <div class="empty-space">
+                <!-- Add empty space so bottom menu won't be on top of last color... <i class="fas fa-unlock"></i> -->
+        </div>
+
+        <div class="bottom-menu">
+                <button class="btn-export" type="button" name="button"><i class="fas fa-file-download"></i>Export</button>
+                <button class="btn-add" type="button" name="button"><i class="fas fa-plus-circle"></i>Add</button>
+                <button class="btn-generate" type="button" name="button" onclick="ChangeColor()"><i class="fas fa-redo-alt"></i>Reload</button>
         </div>
 
         <script src="js/vendor/modernizr-3.11.2.min.js"></script>

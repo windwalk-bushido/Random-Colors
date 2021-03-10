@@ -1,47 +1,87 @@
-var paragraph1 = document.getElementById('color-hex-value-1');
-var paragraph2 = document.getElementById('color-hex-value-2');
-var paragraph3 = document.getElementById('color-hex-value-3');
-var paragraph4 = document.getElementById('color-hex-value-4');
-var paragraph5 = document.getElementById('color-hex-value-5');
+// Getting values from HTML
+var textarea_number1 = document.getElementById("color_hex_value1");
+var textarea_number2 = document.getElementById("color_hex_value2");
+var textarea_number3 = document.getElementById("color_hex_value3");
+var textarea_number4 = document.getElementById("color_hex_value4");
+var textarea_number5 = document.getElementById("color_hex_value5");
 
-var color1 = document.getElementById('color1');
-var color2 = document.getElementById('color2');
-var color3 = document.getElementById('color3');
-var color4 = document.getElementById('color4');
-var color5 = document.getElementById('color5');
+var color1 = document.getElementById("color1");
+var color2 = document.getElementById("color2");
+var color3 = document.getElementById("color3");
+var color4 = document.getElementById("color4");
+var color5 = document.getElementById("color5");
 
-function PadZero(str, len)
+var locked1 = false;
+var locked2 = false;
+var locked3 = false;
+var locked4 = false;
+var locked5 = false;
+
+var unlocked_list = [0, true, true, true, true, true]; // color1, color2... etc.
+
+// Changing locked/unlocked state of colors
+function Lock(locking_number)
 {
-            len = len || 2;
-            var zeros = new Array(len).join('0');
-            return (zeros + str).slice(-len);
+        switch (locking_number)
+        {
+                case 1:
+                        if (unlocked_list[1] === true)
+                        {
+                                unlocked_list[1] = false;
+                        }
+                        if (unlocked_list[1] === false)
+                        {
+                                unlocked_list[1] = true;
+                        }
+                        break;
+
+                case 2:
+                        if (unlocked_list[2] === true)
+                        {
+                                unlocked_list[2] = false;
+                        }
+                        if (unlocked_list[2] === false)
+                        {
+                                unlocked_list[2] = true;
+                        }
+                        break;
+
+                case 3:
+                        if (unlocked_list[3] === true)
+                        {
+                                unlocked_list[3] = false;
+                        }
+                        if (unlocked_list[3] === false)
+                        {
+                                unlocked_list[3] = true;
+                        }
+                        break;
+
+                case 4:
+                        if (unlocked_list[4] === true)
+                        {
+                                unlocked_list[4] = false;
+                        }
+                        if (unlocked_list[4] === false)
+                        {
+                                unlocked_list[4] = true;
+                        }
+                        break;
+
+                case 5:
+                        if (unlocked_list[5] === true)
+                        {
+                                unlocked_list[5] = false;
+                        }
+                        if (unlocked_list[5] === false)
+                        {
+                                unlocked_list[5] = true;
+                        }
+                        break;
+        }
 }
 
-function InvertColor(hex, bw)
-{
-            if (hex.indexOf('#') === 0)
-            {
-                hex = hex.slice(1);
-            }
-
-            var r = parseInt(hex.slice(0, 2), 16),
-                g = parseInt(hex.slice(2, 4), 16),
-                b = parseInt(hex.slice(4, 6), 16);
-
-            if (bw)
-            {
-                return (r * 0.299 + g * 0.587 + b * 0.114) > 186
-                    ? '#000000'
-                    : '#FFFFFF';
-            }
-
-            r = (255 - r).toString(16);
-            g = (255 - g).toString(16);
-            b = (255 - b).toString(16);
-
-            return "#" + PadZero(r) + PadZero(g) + PadZero(b);
-}
-
+// Generating colors
 function ComponentToHex(c)
 {
         let hex = c.toString(16);
@@ -50,65 +90,111 @@ function ComponentToHex(c)
 
 function RGBToHex(r, g, b)
 {
-        return "#" + ComponentToHex(r) + ComponentToHex(g) + ComponentToHex(b);
+        return " #" + ComponentToHex(r) + ComponentToHex(g) + ComponentToHex(b);
 }
 
-function GenerateColor()
+function GenerateColor(color_or_hex)
 {
-        var paragraph_color = undefined;
-
-        for (var paragraph_number = 1; paragraph_number < 6; paragraph_number++)
+        if (color_or_hex === 1)
         {
                 var x = Math.floor(Math.random() * 256);
                 var y = Math.floor(Math.random() * 256);
                 var z = Math.floor(Math.random() * 256);
                 var random_color = "rgb(" + x + "," + y + "," + z + ")";
-
+                return random_color;
+        }
+        if (color_or_hex === 0)
+        {
+                var x = Math.floor(Math.random() * 256);
+                var y = Math.floor(Math.random() * 256);
+                var z = Math.floor(Math.random() * 256);
+                var random_color = "rgb(" + x + "," + y + "," + z + ")";
                 var hex_value = RGBToHex(x, y, z);
-                hex_value.toString(7);
-                hex_value.toUpperCase();
+                return hex_value.toUpperCase();
+        }
+}
 
-                if (paragraph_number === 1)
+function ChangeColor()
+{
+        for (var i = 0; i < unlocked_list.length; i++)
+        {
+                if (unlocked_list[i] === true)
                 {
-                        paragraph_color = InvertColor(random_color);
-                        paragraph1.style.color = paragraph_color;
-                        paragraph1.innerText = hex_value;
-                        color1.style.background = random_color;
-                }
+                        switch (i)
+                        {
+                                case 1:
+                                        var random_color = GenerateColor(1);
+                                        var hex_value = GenerateColor(0);
+                                        color1.style.background = random_color;
+                                        textarea_number1.innerText = hex_value;
+                                        break;
 
-                if (paragraph_number === 2)
-                {
-                        paragraph_color = InvertColor(random_color);
-                        paragraph2.style.color = paragraph_color;
-                        paragraph2.innerText = hex_value;
-                        color2.style.background = random_color;
-                }
+                                case 2:
+                                        var random_color = GenerateColor(1);
+                                        var hex_value = GenerateColor(0);
+                                        color2.style.background = random_color;
+                                        textarea_number2.innerText = hex_value;
+                                        break;
 
-                if (paragraph_number === 3)
-                {
-                        paragraph_color = InvertColor(random_color);
-                        paragraph3.style.color = paragraph_color;
-                        paragraph3.innerText = hex_value;
-                        color3.style.background = random_color;
-                }
+                                case 3:
+                                        var random_color = GenerateColor(1);
+                                        var hex_value = GenerateColor(0);
+                                        color3.style.background = random_color;
+                                        textarea_number3.innerText = hex_value;
+                                        break;
 
-                if (paragraph_number === 4)
-                {
-                        paragraph_color = InvertColor(random_color);
-                        paragraph4.style.color = paragraph_color;
-                        paragraph4.innerText = hex_value;
-                        color4.style.background = random_color;
-                }
+                                case 4:
+                                        var random_color = GenerateColor(1);
+                                        var hex_value = GenerateColor(0);
+                                        color4.style.background = random_color;
+                                        textarea_number4.innerText = hex_value;
+                                        break;
 
-                if (paragraph_number === 5)
-                {
-                        paragraph_color = InvertColor(random_color);
-                        paragraph5.style.color = paragraph_color;
-                        paragraph5.innerText = hex_value;
-                        color5.style.background = random_color;
+                                case 5:
+                                        var random_color = GenerateColor(1);
+                                        var hex_value = GenerateColor(0);
+                                        color5.style.background = random_color;
+                                        textarea_number5.innerText = hex_value;
+                                        break;
+                        }
                 }
         }
 }
 
-// Upon opening the site...
-GenerateColor();
+// Upon opening the site get radnom colors duh
+ChangeColor();
+
+// Copy the color to clipboard
+function CopyToClipboard(textarea_number)
+{
+        // hex_value_TBC means = hex value To Be Copied
+        if (textarea_number === 1)
+        {
+                var hex_value_TBC = document.getElementById("color_hex_value1");
+        }
+        if (textarea_number === 2)
+        {
+                var hex_value_TBC = document.getElementById("color_hex_value2");
+        }
+        if (textarea_number === 3)
+        {
+                var hex_value_TBC = document.getElementById("color_hex_value3");
+        }
+        if (textarea_number === 4)
+        {
+                var hex_value_TBC = document.getElementById("color_hex_value4");
+        }
+        if (textarea_number === 5)
+        {
+                var hex_value_TBC = document.getElementById("color_hex_value5");
+        }
+
+        hex_value_TBC.disabled = false;
+        hex_value_TBC.select();
+        hex_value_TBC.setSelectionRange(0, 10);
+        hex_value_TBC.disabled = true;
+        document.execCommand("copy");
+        alert("Copied the color value: " + hex_value_TBC.value);
+}
+
+// Download colors as txt file

@@ -1,0 +1,106 @@
+@import "mixins";
+
+.top-menu
+{
+        @extend %flexbox;
+        justify-content: space-evenly;
+
+        padding-top: 12px;
+        padding-bottom: 12px;
+
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+
+        background-color: $grey;
+
+        .btn-about,
+        .btn-mode
+        {
+                @extend %flexbox;
+                @extend %button-dark;
+        }
+
+        .btn-mode
+        {
+                align-items: stretch;
+
+                i
+                {
+                        padding-right: 8px;
+                }
+        }
+
+        .btn-about:hover,
+        .btn-mode:hover
+        {
+                @extend %button-dark-hover;
+        }
+
+        .btn-about:active,
+        .btn-mode:active
+        {
+                @extend %button-dark-active;
+        }
+
+        .logo
+        {
+                @extend %flexbox;
+                width: 48px;
+        }
+}
+
+.bottom-menu
+{
+        @extend %flexbox;
+        justify-content: space-evenly;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        height: 40px;
+
+        padding-bottom: 12px;
+        padding-top: 12px;
+
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        border-top: 2px solid $dark-grey;
+
+        background-color: $grey;
+
+        .btn-export,
+        .btn-add,
+        .btn-generate
+        {
+                @extend %flexbox;
+                @extend %button-dark;
+
+                align-items: stretch;
+
+                i
+                {
+                        padding-right: 8px;
+                }
+        }
+
+        .btn-export:hover,
+        .btn-add:hover,
+        .btn-generate:hover
+        {
+                @extend %button-dark-hover;
+        }
+
+        .btn-export:active,
+        .btn-add:active,
+        .btn-generate:active
+        {
+                @extend %button-dark-active;
+        }
+}
+
+.empty-space
+{
+        @extend %flexbox;
+        height: 66px;
+}

@@ -1,0 +1,91 @@
+@import "mixins";
+
+// Mobile -> min-width: 320px;
+::selection
+{
+        background-color: rgba(0,0,0,0); // This fixed colored selection of an textarea while copying. Now it's transparent.
+        color: $white;
+}
+
+body
+{
+        @extend %flexbox;
+        align-items: flex-start;
+
+        font-family: Helvetica, sans-serif;
+
+        background-color: $dark-grey;
+
+        .colors
+        {
+                @extend %flexbox;
+
+                .color1,
+                .color2,
+                .color3,
+                .color4,
+                .color5
+                {
+                        @extend %flexbox;
+                        align-content: flex-end;
+
+                        height: 256px;
+
+                        .color-panel
+                        {
+                                @extend %flexbox;
+                                justify-content: space-evenly;
+
+                                padding: 8px 0px 8px 0px;
+
+                                background-color: $grey;
+
+                                button
+                                {
+                                        @extend %color-btn-dark;
+                                }
+
+                                button:hover
+                                {
+                                        @extend %color-btn-dark-hover;
+                                }
+
+                                button:active
+                                {
+                                        @extend %color-btn-dark-active;
+                                }
+
+                                textarea
+                                {
+                                        @extend %flexbox;
+                                        width: 33%;
+                                        padding-top: 4px;
+                                        margin: 0px;
+                                        border-radius: 64px;
+                                        border: none;
+                                        resize: none;
+
+                                        font-stretch: expanded;
+                                        font-size: 22px;
+
+                                        background-color: $dark-grey;
+                                        color: $white;
+
+                                        cursor: default;
+                                }
+                        }
+                }
+        }
+}
+
+// Tablet
+@media screen and (min-width: 768px) and (max-width: 1023px)
+{
+
+}
+
+// Desktop
+@media screen and (min-width: 1024px)
+{
+
+}
